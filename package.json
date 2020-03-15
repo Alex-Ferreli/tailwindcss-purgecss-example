@@ -13,13 +13,18 @@
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-scripts": "3.4.0",
+    "tailwindcss": "^1.2.0",
     "typescript": "~3.7.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "prestart": "npm run tailwindcss:build",
+    "start": "react-app-rewired start",
+    "prebuild": "npm run tailwindcss:build && npm run tailwindcss:purge",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject",
+    "tailwindcss:build": "tailwind build src/tailwind.src.css -c tailwind.config.js -o src/tailwind.css",
+    "tailwindcss:purge": "purgecss -c purgecss.config.js -o src"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -35,5 +40,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "customize-cra": "^0.9.1",
+    "purgecss": "^2.1.0",
+    "react-app-rewired": "^2.1.5"
   }
 }
