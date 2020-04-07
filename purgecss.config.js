@@ -4,7 +4,7 @@ module.exports = {
   extractors: [
     {
       extractor: content => content.match(/[\w-/:]+(?<!:)/gi) || [],
-      extensions: ['html', 'js'],
+      extensions: ['html', 'js', 'jsx', 'ts', 'tsx'],
     },
   ],
 };
